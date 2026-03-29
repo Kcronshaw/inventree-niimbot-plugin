@@ -181,12 +181,14 @@ class PrinterClient:
             await self.write_raw(pkt)
             await asyncio.sleep(0.01)
 
-        while not await self.end_page_print():
+        for _ in range(100):
+            if await self.end_page_print():
+                break
             await asyncio.sleep(0.05)
 
-        while True:
+        for _ in range(300):
             status = await self.get_print_status()
-            if status['page'] == quantity:
+            if status and status['page'] >= quantity:
                 break
             await asyncio.sleep(0.1)
 
