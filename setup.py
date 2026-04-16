@@ -41,7 +41,7 @@ setuptools.setup(
     packages=setuptools.find_packages(),
 
     install_requires=[
-        'bleak==0.21.1',
+        'bleak==0.21.0',
         'devtools==0.12.2',
         'setuptools==69.5.1',
         'markdown-it-py==3.0.0',
